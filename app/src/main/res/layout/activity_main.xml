@@ -17,7 +17,7 @@
       android:layout_weight="30"
       android:gravity="bottom"
       android:text="@string/foreign_currency"
-      android:textColor="#ff22e9ff"/>
+      android:textColor="@color/turquoise"/>
     <Spinner
       android:id="@+id/spn_for"
       android:layout_width="fill_parent"
@@ -34,7 +34,7 @@
       android:layout_weight="15"
       android:gravity="bottom"
       android:text="@string/enter_foreign_currency_amount_here"
-      android:textColor="#666"
+      android:textColor="@color/grey_med"
       android:textSize="12sp"/>
   </LinearLayout>
   <LinearLayout
@@ -55,7 +55,7 @@
       android:digits="0123456789."
       android:gravity="center_vertical"
       android:inputType="numberDecimal"
-      android:textColor="#FFF"
+      android:textColor="@color/white"
       android:textSize="30sp">
       <requestFocus/>
     </EditText>
@@ -68,7 +68,7 @@
     android:layout_marginRight="10dp"
     android:layout_weight="10"
     android:text="@string/calculate"
-    android:textColor="#AAA"/>
+    android:textColor="@color/grey_light"/>
   <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="0dp"
@@ -82,7 +82,7 @@
       android:layout_weight="30"
       android:gravity="bottom"
       android:text="@string/home_currency"
-      android:textColor="#ff22e9ff"/>
+      android:textColor="@color/turquoise"/>
 
     <ProgressBar
       style="?android:attr/progressBarStyleSmall"
@@ -106,7 +106,7 @@
       android:layout_weight="15"
       android:gravity="bottom"
       android:text="@string/calculated_result_in_home_currency"
-      android:textColor="#666"
+      android:textColor="@color/grey_med"
       android:textSize="12sp"/>
   </LinearLayout>
   <LinearLayout
@@ -123,7 +123,7 @@
       android:layout_gravity="center_vertical"
       android:layout_marginLeft="5dp"
       android:layout_marginRight="5dp"
-      android:background="#333"
+      android:background="@color/grey_med_dark"
       android:gravity="center_vertical"
       android:textSize="30sp"
       android:typeface="normal"/>
