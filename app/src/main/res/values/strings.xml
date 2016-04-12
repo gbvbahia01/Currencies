@@ -1,3 +1,8 @@
 <resources>
   <string name="app_name">Currencies</string>
+  <string name="foreign_currency">Foreign Currency</string>
+  <string name="enter_foreign_currency_amount_here">Enter foreign currency amount here:</string>
+  <string name="calculate">Calculate</string>
+  <string name="home_currency">Home Currency</string>
+  <string name="calculated_result_in_home_currency">Calculated result in home currency:</string>
 </resources>
