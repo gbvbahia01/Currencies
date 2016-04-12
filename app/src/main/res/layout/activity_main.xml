@@ -83,6 +83,13 @@
       android:gravity="bottom"
       android:text="@string/home_currency"
       android:textColor="#ff22e9ff"/>
+
+    <ProgressBar
+      style="?android:attr/progressBarStyleSmall"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/progressBar"/>
+
     <Spinner
       android:id="@+id/spn_hom"
       android:layout_width="fill_parent"
