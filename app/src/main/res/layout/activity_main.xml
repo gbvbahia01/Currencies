@@ -10,14 +10,8 @@
     android:layout_weight="20"
     android:orientation="vertical">
     <TextView
-      android:layout_width="fill_parent"
-      android:layout_height="0dp"
-      android:layout_marginLeft="10dp"
-      android:layout_marginRight="10dp"
-      android:layout_weight="30"
-      android:gravity="bottom"
       android:text="@string/foreign_currency"
-      android:textColor="@color/turquoise"/>
+      style="@style/label.curr"/>
     <Spinner
       android:id="@+id/spn_for"
       android:layout_width="fill_parent"
@@ -31,19 +25,12 @@
       android:layout_height="0dp"
       android:layout_marginLeft="10dp"
       android:layout_marginRight="10dp"
-      android:layout_weight="15"
       android:gravity="bottom"
       android:text="@string/enter_foreign_currency_amount_here"
-      android:textColor="@color/grey_med"
-      android:textSize="12sp"/>
+      style="@style/label.desc"/>
   </LinearLayout>
   <LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="0dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_weight="20"
-    android:background="#222">
+    style="@style/layout_back">
     <EditText
       android:id="@+id/edt_amount"
       android:layout_width="fill_parent"
@@ -75,14 +62,8 @@
     android:layout_weight="20"
     android:orientation="vertical">
     <TextView
-      android:layout_width="fill_parent"
-      android:layout_height="0dp"
-      android:layout_marginLeft="10dp"
-      android:layout_marginRight="10dp"
-      android:layout_weight="30"
-      android:gravity="bottom"
       android:text="@string/home_currency"
-      android:textColor="@color/turquoise"/>
+      style="@style/label.curr"/>
 
     <ProgressBar
       style="?android:attr/progressBarStyleSmall"
@@ -110,12 +91,7 @@
       android:textSize="12sp"/>
   </LinearLayout>
   <LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="0dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_weight="20"
-    android:background="#222">
+    style="@style/layout_back">
     <TextView
       android:id="@+id/txt_converted"
       android:layout_width="fill_parent"
