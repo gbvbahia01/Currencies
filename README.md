@@ -12,3 +12,4 @@ http://www.apress.com/9781430266013
 * Ctrl+Shift+N | Cmd+Shift+O    to search a file.
 * Ctrl+F | Cmd+F                to find characters.
 * Ctrl+R | Cmd+R                to find and replace characters.
+* Shift+F10 | Ctrl+R            to run the app.
