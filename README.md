@@ -5,4 +5,4 @@ http://www.apress.com/9781430266013
 
 ###Short Cuts
 * Ctrl+Alt+C | Cmd+Alt+C to extract a constant
-* Ctrl+K | Cmd+K and commit 
+* Ctrl+K | Cmd+K to starts a synchronizing 
