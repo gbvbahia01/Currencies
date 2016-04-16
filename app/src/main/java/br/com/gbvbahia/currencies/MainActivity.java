@@ -7,12 +7,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class MainActivity extends AppCompatActivity {
 
   private Button mCalcButton;
   private TextView mConvertedTextView;
   private EditText mAmountEditText;
   private Spinner mForSpinner, mHomSpinner;
+  private String[] mCurrencies;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +24,14 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     referenceViewObjects();
+    fillCurrencies();
+  }
+
+  private void fillCurrencies() {
+    ArrayList<String> arrayList =
+        (ArrayList<String>) getIntent().getSerializableExtra(SplashActivity.KEY_CURRENCIES_BUNDLE);
+    Collections.sort(arrayList);
+    mCurrencies = arrayList.toArray(new String[arrayList.size()]);
   }
 
   private void referenceViewObjects() {
