@@ -3,7 +3,7 @@
 As I read in "Learn Android Studio Build Android Apps Quickly and Effectively" Book<br>
 http://www.apress.com/9781430266013
 
-###Short Cuts (WIN | MAC)
+###Android Studio Short Cuts (WIN | MAC)
 * Ctrl+Alt+C | Cmd+Alt+C:       to extract a constant.
 * Ctrl+K | Cmd+K:               to start a synchronizing/commit dialog box.
 * Alt+Insert | Cmd+N:           to generate (Constructor, Override Methods, Delegate Methods, Copyright, App Indexing API Code).
