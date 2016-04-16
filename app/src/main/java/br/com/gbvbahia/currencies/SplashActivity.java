@@ -1,6 +1,7 @@
 package br.com.gbvbahia.currencies;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Window;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class SplashActivity extends Activity {
+  public static final String KEY_CURRENCIES_BUNDLE = "key_arraylist";
   //url to currency codes used in this application
   public static final String URL_CODES = "http://openexchangerates.org/api/currencies.json";
   //ArrayList of currencies that will be fetched and passed into MainActivity
@@ -65,12 +67,15 @@ public class SplashActivity extends Activity {
           throw new JSONException("no data available");
         }
         Iterator iterator = jsonObject.keys();
-        String key = "";
+        String key;
         mCurrencies = new ArrayList<>();
         while(iterator.hasNext()) {
           key = (String) iterator.next();
           mCurrencies.add(key + " | " + jsonObject.getString(key));
         }
+        Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+        mainIntent.putExtra(KEY_CURRENCIES_BUNDLE, mCurrencies);
+        startActivity(mainIntent);
         finish();
       } catch(JSONException e) {
         Toast.makeText(SplashActivity.this, "There's been a JSON exception: "
