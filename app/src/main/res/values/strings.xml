@@ -10,4 +10,8 @@
   <string name="invert_codes">invert codes</string>
   <string name="not_on_line">You must be online to do this action.</string>
   <string name="exit">exit</string>
+  <string name="calculating_result">Calculating Result...</string>
+  <string name="one_moment_please">One moment please...</string>
+  <string name="cancel">Cancel</string>
+  <string name="error_to_conver_json">Error trying to convert values from exchange service</string>
 </resources>

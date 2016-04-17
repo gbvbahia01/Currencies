@@ -14,3 +14,5 @@ http://www.apress.com/9781430266013
 * Ctrl+R | Cmd+R                to find and replace characters.
 * Shift+F10 | Ctrl+R            to run the app.
 * Ctrl+Alt+M | Cmd+Alt+M        to extract a method. (You must select a portion of code first)
+* Ctrl+Shift+Up | Cmd+Shift+Up  to move a previous selected portion of code to above.
+* Ctrl+Shift+Dw | Cmd+Shift+Dw  to move a previous selected portion of code to below.
