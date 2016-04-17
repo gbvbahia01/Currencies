@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity
   private EditText mAmountEditText;
   private Spinner mForSpinner, mHomSpinner;
   private String[] mCurrencies;
+  private ProgressBar mProgress;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity
     actionBar.setIcon(R.mipmap.ic_launcher);
 
     referenceViewObjects();
+    mProgress.setVisibility(View.INVISIBLE);
     fillCurrencies();
     defineAdapter();
 
@@ -192,6 +195,7 @@ public class MainActivity extends AppCompatActivity
     mCalcButton = (Button) findViewById(R.id.btn_calc);
     mForSpinner = (Spinner) findViewById(R.id.spn_for);
     mHomSpinner = (Spinner) findViewById(R.id.spn_hom);
+    mProgress = (ProgressBar) findViewById(R.id.progressBar);
   }
 
   private void fillCurrencies() {
@@ -283,6 +287,7 @@ public class MainActivity extends AppCompatActivity
      */
     @Override
     protected void onPreExecute() {
+      mProgress.setVisibility(View.VISIBLE);
       progressDialog = new ProgressDialog(MainActivity.this);
       progressDialog.setTitle(MainActivity.this.getString(R.string.calculating_result));
       progressDialog.setMessage(MainActivity.this.getString(R.string.one_moment_please));
@@ -301,6 +306,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(DialogInterface dialog, int which) {
               CurrencyConverterTask.this.cancel(true);
               progressDialog.dismiss();
+              mProgress.setVisibility(View.INVISIBLE);
             }
           });
     }
@@ -376,6 +382,7 @@ public class MainActivity extends AppCompatActivity
       }
       mConvertedTextView.setText(OpenExchange.DECIMAL_FORMAT.format(dCalculated)
       + " " + strHomCode);
+      mProgress.setVisibility(View.INVISIBLE);
     }
   }
 }
