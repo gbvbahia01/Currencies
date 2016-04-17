@@ -1,8 +1,7 @@
 package br.com.gbvbahia.currencies;
 
-import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,9 +12,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import br.com.gbvbahia.currencies.util.AssetsHelper;
 import br.com.gbvbahia.currencies.util.NetworkHelper;
 import br.com.gbvbahia.currencies.util.SharedPreferencesHelper;
 
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     mForSpinner.setOnItemSelectedListener(this);
 
     defineSpinnersValues(savedInstanceState);
+
+    OpenExchange.mKey = AssetsHelper.getKeyFromProperties(this, OpenExchange.PROP_KEY_OPEN_EXCHANGE);
 
     mCalcButton.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -232,4 +235,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
   private void defineKeys(String key, String value){
     SharedPreferencesHelper.setString(this, key, value);
   }
+
+  // ###################################
+  // INNER CLASS OPEN EXCHANGE
+  // ###################################
+  private static class OpenExchange {
+
+    public static final String RATES = "rates";
+    public static final String URL_BASE =
+        "http://openexchangerates.org/api/latest.json?app_id=";
+    public static final DecimalFormat DECIMAL_FORMAT = new
+        DecimalFormat("#,##0.00000");
+    public static final String PROP_KEY_OPEN_EXCHANGE = "open_key";
+    private static String mKey = null;
+  }
+
 }
