@@ -13,3 +13,4 @@ http://www.apress.com/9781430266013
 * Ctrl+F | Cmd+F                to find characters.
 * Ctrl+R | Cmd+R                to find and replace characters.
 * Shift+F10 | Ctrl+R            to run the app.
+* Ctrl+Alt+M | Cmd+Alt+M        to extract a method. (You must select a portion of code first)
