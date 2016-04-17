@@ -1,5 +1,6 @@
 package br.com.gbvbahia.currencies;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,8 +17,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import br.com.gbvbahia.currencies.util.NetworkHelper;
+import br.com.gbvbahia.currencies.util.SharedPreferencesHelper;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+  private static final String FOR = "FOR_CURRENCY";
+  private static final String HOM = "HOM_CURRENCY";
 
   private Button mCalcButton;
   private TextView mConvertedTextView;
@@ -36,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     mHomSpinner.setOnItemSelectedListener(this);
     mForSpinner.setOnItemSelectedListener(this);
+
+    defineSpinnersValues(savedInstanceState);
   }
 
   // ###################################
@@ -127,15 +134,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
   public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
       switch(parent.getId()){
         case R.id.spn_for:
-          //TODO
+          defineKeys(FOR,extractCodeFromCurrency((String)mForSpinner.getSelectedItem()));
           break;
         case R.id.spn_hom:
-          //TODO
+          defineKeys(HOM,extractCodeFromCurrency((String)mHomSpinner.getSelectedItem()));
           break;
-
         default:
           break;
       }
+    mConvertedTextView.setText("");
   }
 
   /**
@@ -153,13 +160,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
   // ###################################
   // PRIVATE METHODS
   // ###################################
-
-  private void defineAdapter() {
-    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
-        R.layout.spinner_closed, mCurrencies);
-    arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    mHomSpinner.setAdapter(arrayAdapter);
-    mForSpinner.setAdapter(arrayAdapter);
+  private void referenceViewObjects() {
+    mConvertedTextView = (TextView) findViewById(R.id.txt_converted);
+    mAmountEditText = (EditText) findViewById(R.id.edt_amount);
+    mCalcButton = (Button) findViewById(R.id.btn_calc);
+    mForSpinner = (Spinner) findViewById(R.id.spn_for);
+    mHomSpinner = (Spinner) findViewById(R.id.spn_hom);
   }
 
   private void fillCurrencies() {
@@ -169,12 +175,28 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     mCurrencies = arrayList.toArray(new String[arrayList.size()]);
   }
 
-  private void referenceViewObjects() {
-    mConvertedTextView = (TextView) findViewById(R.id.txt_converted);
-    mAmountEditText = (EditText) findViewById(R.id.edt_amount);
-    mCalcButton = (Button) findViewById(R.id.btn_calc);
-    mForSpinner = (Spinner) findViewById(R.id.spn_for);
-    mHomSpinner = (Spinner) findViewById(R.id.spn_hom);
+  private void defineAdapter() {
+    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
+        R.layout.spinner_closed, mCurrencies);
+    arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    mHomSpinner.setAdapter(arrayAdapter);
+    mForSpinner.setAdapter(arrayAdapter);
+  }
+
+  private void defineSpinnersValues(Bundle savedInstanceState) {
+    if(savedInstanceState == null
+        && (SharedPreferencesHelper.getString(this, FOR) == null
+        && SharedPreferencesHelper.getString(this, HOM) == null)){
+      mForSpinner.setSelection(findPositionGivenCode("CNY", mCurrencies));
+      mHomSpinner.setSelection(findPositionGivenCode("USD", mCurrencies));
+      defineKeys(FOR, "CNY");
+      defineKeys(HOM, "USD");
+    }else {
+      mForSpinner.setSelection(findPositionGivenCode(SharedPreferencesHelper.getString(this, FOR),
+          mCurrencies));
+      mHomSpinner.setSelection(findPositionGivenCode(SharedPreferencesHelper.getString(this, HOM),
+          mCurrencies));
+    }
   }
 
   private void invertCurrencies(){
@@ -183,6 +205,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     mForSpinner.setSelection(nHom);
     mHomSpinner.setSelection(nFor);
     mConvertedTextView.setText("");
+    defineKeys(FOR,extractCodeFromCurrency((String)mForSpinner.getSelectedItem()));
+    defineKeys(HOM,extractCodeFromCurrency((String)mHomSpinner.getSelectedItem()));
   }
 
   private int findPositionGivenCode(String code, String[] currencies){
@@ -196,5 +220,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
   private String extractCodeFromCurrency(String currency) {
     return currency.substring(0,3);
+  }
+
+  private void defineKeys(String key, String value){
+    SharedPreferencesHelper.setString(this, key, value);
   }
 }

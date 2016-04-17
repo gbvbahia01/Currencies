@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.widget.Toast;
+
+import br.com.gbvbahia.currencies.R;
 
 /**
  * Created by Guilherme on 4/16/16.
@@ -33,6 +36,9 @@ public class NetworkHelper {
       Uri uri = Uri.parse(pUri);
       Intent intent = new Intent(Intent.ACTION_VIEW, uri);
       pContext.startActivity(intent);
+    }else {
+      Toast.makeText(pContext, pContext.getText(R.string.not_on_line),
+          Toast.LENGTH_SHORT).show();
     }
   }
 }

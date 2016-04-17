@@ -8,5 +8,6 @@
   <string name="calculated_result_in_home_currency">Calculated result in home currency:</string>
   <string name="search_active_codes">search active codes</string>
   <string name="invert_codes">invert codes</string>
+  <string name="not_on_line">You must be online to do this action.</string>
   <string name="exit">exit</string>
 </resources>
