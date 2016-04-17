@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     defineSpinnersValues(savedInstanceState);
 
-    OpenExchange.mKey = AssetsHelper.getKeyFromProperties(this, OpenExchange.PROP_KEY_OPEN_EXCHANGE);
+    OpenExchange.mKey = AssetsHelper.getKeyFromProperties(this,
+        OpenExchange.PROP_KEY_OPEN_EXCHANGE);
 
     mCalcButton.setOnClickListener(new View.OnClickListener() {
       @Override
