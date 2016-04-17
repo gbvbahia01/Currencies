@@ -43,6 +43,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     mForSpinner.setOnItemSelectedListener(this);
 
     defineSpinnersValues(savedInstanceState);
+
+    mCalcButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        //TODO
+      }
+    });
   }
 
   // ###################################
