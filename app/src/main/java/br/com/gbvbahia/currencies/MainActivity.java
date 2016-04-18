@@ -287,6 +287,14 @@ public class MainActivity extends AppCompatActivity
      */
     @Override
     protected void onPreExecute() {
+      String strAmount = mAmountEditText.getText().toString();
+      if(strAmount == null || strAmount.isEmpty()){
+        Toast.makeText(MainActivity.this,
+            MainActivity.this.getString(R.string.amount_null),
+                Toast.LENGTH_LONG).show();
+        super.cancel(true);
+        return;
+      }
       mProgress.setVisibility(View.VISIBLE);
       progressDialog = new ProgressDialog(MainActivity.this);
       progressDialog.setTitle(MainActivity.this.getString(R.string.calculating_result));
@@ -309,6 +317,7 @@ public class MainActivity extends AppCompatActivity
               mProgress.setVisibility(View.INVISIBLE);
             }
           });
+      progressDialog.show();
     }
 
     /**
@@ -383,6 +392,7 @@ public class MainActivity extends AppCompatActivity
       mConvertedTextView.setText(OpenExchange.DECIMAL_FORMAT.format(dCalculated)
       + " " + strHomCode);
       mProgress.setVisibility(View.INVISIBLE);
+      progressDialog.dismiss();
     }
   }
 }

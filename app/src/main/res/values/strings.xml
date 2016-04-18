@@ -14,4 +14,5 @@
   <string name="one_moment_please">One moment please...</string>
   <string name="cancel">Cancel</string>
   <string name="error_to_conver_json">Error trying to convert values from exchange service</string>
+  <string name="amount_null">A value to exchange must be informed</string>
 </resources>
