@@ -46,6 +46,11 @@ public class SplashActivity extends Activity {
      */
     @Override
     protected JSONObject doInBackground(String... params) {
+      try {
+        Thread.currentThread().sleep(1000);
+      } catch(InterruptedException e) {
+        e.printStackTrace();
+      }
       return new JSONParser().getJSONFromUrl(params[0]);
     }
 
@@ -73,7 +78,7 @@ public class SplashActivity extends Activity {
           key = (String) iterator.next();
           mCurrencies.add(key + " | " + jsonObject.getString(key));
         }
-        Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+        Intent mainIntent = new Intent(SplashActivity.this, ExchangeActivity.class);
         mainIntent.putExtra(KEY_CURRENCIES_BUNDLE, mCurrencies);
         startActivity(mainIntent);
         finish();

@@ -29,7 +29,7 @@ import br.com.gbvbahia.currencies.util.AssetsHelper;
 import br.com.gbvbahia.currencies.util.NetworkHelper;
 import br.com.gbvbahia.currencies.util.SharedPreferencesHelper;
 
-public class MainActivity extends AppCompatActivity
+public class ExchangeActivity extends AppCompatActivity
     implements AdapterView.OnItemSelectedListener {
 
   private static final String FOR = "FOR_CURRENCY";
@@ -289,19 +289,19 @@ public class MainActivity extends AppCompatActivity
     protected void onPreExecute() {
       String strAmount = mAmountEditText.getText().toString();
       if(strAmount == null || strAmount.isEmpty()){
-        Toast.makeText(MainActivity.this,
-            MainActivity.this.getString(R.string.amount_null),
+        Toast.makeText(ExchangeActivity.this,
+            ExchangeActivity.this.getString(R.string.amount_null),
                 Toast.LENGTH_LONG).show();
         super.cancel(true);
         return;
       }
       mProgress.setVisibility(View.VISIBLE);
-      progressDialog = new ProgressDialog(MainActivity.this);
-      progressDialog.setTitle(MainActivity.this.getString(R.string.calculating_result));
-      progressDialog.setMessage(MainActivity.this.getString(R.string.one_moment_please));
+      progressDialog = new ProgressDialog(ExchangeActivity.this);
+      progressDialog.setTitle(ExchangeActivity.this.getString(R.string.calculating_result));
+      progressDialog.setMessage(ExchangeActivity.this.getString(R.string.one_moment_please));
       progressDialog.setCancelable(true);
       progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
-          MainActivity.this.getString(R.string.cancel),
+          ExchangeActivity.this.getString(R.string.cancel),
           new DialogInterface.OnClickListener() {
             /**
              * This method will be invoked when a button in the dialog is clicked.
@@ -385,8 +385,8 @@ public class MainActivity extends AppCompatActivity
               / jsonRates.getDouble(strForCode);
         }
       }catch(JSONException je){
-        Toast.makeText(MainActivity.this,
-            MainActivity.this.getString(R.string.error_to_conver_json),
+        Toast.makeText(ExchangeActivity.this,
+            ExchangeActivity.this.getString(R.string.error_to_conver_json),
             Toast.LENGTH_LONG).show();
       }
       mConvertedTextView.setText(OpenExchange.DECIMAL_FORMAT.format(dCalculated)
