@@ -41,6 +41,7 @@ public class ExchangeActivity extends AppCompatActivity
   private Spinner mForSpinner, mHomSpinner;
   private String[] mCurrencies;
   private ProgressBar mProgress;
+  private TaskCallback mCallback;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -184,6 +185,14 @@ public class ExchangeActivity extends AppCompatActivity
   @Override
   public void onNothingSelected(AdapterView<?> parent) {
     //do nothing it is a SLUG :)
+  }
+
+  // ###################################
+  // CALL BACK
+  // ###################################
+
+  public void setCallback(TaskCallback callback) {
+    mCallback = callback;
   }
 
   // ###################################
@@ -393,6 +402,9 @@ public class ExchangeActivity extends AppCompatActivity
       + " " + strHomCode);
       mProgress.setVisibility(View.INVISIBLE);
       progressDialog.dismiss();
+      if(mCallback != null){
+        mCallback.executionDone();
+      }
     }
   }
 }
