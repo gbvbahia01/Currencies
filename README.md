@@ -17,4 +17,6 @@ http://www.apress.com/9781430266013
 * Ctrl+Shift+Up | Cmd+Shift+Up  to move a previous selected portion of code to above.
 * Ctrl+Shift+Dw | Cmd+Shift+Dw  to move a previous selected portion of code to below.
 * Ctrl+Alt+S | Cmd+Comma        to open Settings/Preferences
-* 
+* Ctrl+Alt+L | Cmd+Alt+L        to apply the code arrangement settings
+
+** Help --> Default Keymap Reference (all short cuts)
